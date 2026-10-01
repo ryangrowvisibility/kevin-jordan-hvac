@@ -1,72 +1,52 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
   --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
 
-  /* Dark-mode-cool palette — dispatch console at low light */
-  --color-abyss: oklch(0.158 0.028 240);
-  --color-ink: oklch(0.212 0.032 240);
-  --color-slate: oklch(0.288 0.034 240);
-  --color-slate-2: oklch(0.342 0.030 240);
-  --color-steel: oklch(0.520 0.040 232);
-  --color-bone: oklch(0.952 0.012 220);
-  --color-bone-2: oklch(0.892 0.014 220);
-  --color-bone-3: oklch(0.782 0.015 220);
-  --color-teal: oklch(0.754 0.144 200);
-  --color-teal-2: oklch(0.684 0.154 198);
-  --color-teal-3: oklch(0.544 0.144 206);
-  --color-amber: oklch(0.822 0.144 76);
-
-  --radius-sm: 2px;
-  --radius-md: 4px;
+  --color-navy: oklch(0.31 0.085 256);
+  --color-navy-deep: oklch(0.24 0.07 256);
+  --color-navy-soft: oklch(0.93 0.025 250);
+  --color-cta: oklch(0.6 0.18 42);
+  --color-cta-hover: oklch(0.55 0.18 40);
+  --color-ink: oklch(0.22 0.025 256);
+  --color-muted: oklch(0.45 0.025 256);
+  --color-line: oklch(0.9 0.012 250);
+  --color-tint: oklch(0.975 0.008 250);
+  --color-star: oklch(0.78 0.16 75);
 }
 
 html {
-  background: var(--color-abyss) !important;
-  color: var(--color-bone);
+  background: #ffffff !important;
 }
 
 body {
-  background: var(--color-abyss) !important;
-  color: var(--color-bone);
-  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  font-weight: 400;
-  line-height: 1.55;
+  background: #ffffff !important;
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
 }
 
-.font-display {
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-}
-.font-mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
-}
-
-::selection {
-  background: var(--color-teal);
-  color: var(--color-abyss);
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-heading), system-ui, sans-serif;
+    color: var(--color-navy-deep);
+    letter-spacing: -0.015em;
+  }
 }
 
-.hairline-teal {
-  background: var(--color-teal);
-  opacity: 0.6;
-  height: 1px;
+details > summary::-webkit-details-marker {
+  display: none;
 }
 
-.grid-plot {
-  background-image:
-    linear-gradient(to right, oklch(0.520 0.040 232 / 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.520 0.040 232 / 0.08) 1px, transparent 1px);
-  background-size: 56px 56px;
+details[open] .faq-icon {
+  transform: rotate(45deg);
 }
-
-@keyframes rise {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
