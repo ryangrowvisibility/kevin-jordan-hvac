@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  /* Dark-mode-cool palette — dispatch console at low light */
+  --color-abyss: oklch(0.158 0.028 240);
+  --color-ink: oklch(0.212 0.032 240);
+  --color-slate: oklch(0.288 0.034 240);
+  --color-slate-2: oklch(0.342 0.030 240);
+  --color-steel: oklch(0.520 0.040 232);
+  --color-bone: oklch(0.952 0.012 220);
+  --color-bone-2: oklch(0.892 0.014 220);
+  --color-bone-3: oklch(0.782 0.015 220);
+  --color-teal: oklch(0.754 0.144 200);
+  --color-teal-2: oklch(0.684 0.154 198);
+  --color-teal-3: oklch(0.544 0.144 206);
+  --color-amber: oklch(0.822 0.144 76);
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-abyss) !important;
+  color: var(--color-bone);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-abyss) !important;
+  color: var(--color-bone);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+::selection {
+  background: var(--color-teal);
+  color: var(--color-abyss);
+}
+
+.hairline-teal {
+  background: var(--color-teal);
+  opacity: 0.6;
+  height: 1px;
+}
+
+.grid-plot {
+  background-image:
+    linear-gradient(to right, oklch(0.520 0.040 232 / 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.520 0.040 232 / 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
